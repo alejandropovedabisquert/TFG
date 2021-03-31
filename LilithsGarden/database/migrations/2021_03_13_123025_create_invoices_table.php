@@ -14,13 +14,13 @@ class CreateInvoicesTable extends Migration
     public function up()
     {
         Schema::create('invoices', function (Blueprint $table) {
-            $table->id('idInvoice');
+            $table->id();
             $table->unsignedBigInteger('idOrder');
             $table->unsignedBigInteger('idClient');
             $table->string('deliveryAddress');
             $table->integer('taxBase');
-            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');
-            $table->foreign('idOrder')->references('idOrder')->on('orders')->onDelete('cascade');
+            $table->foreign('idClient')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('idOrder')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }

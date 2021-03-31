@@ -14,13 +14,13 @@ class CreateOrderLinesTable extends Migration
     public function up()
     {
         Schema::create('order_lines', function (Blueprint $table) {
-            $table->id('orderLine');
+            $table->id();
             $table->unsignedBigInteger('idOrder');
             $table->unsignedBigInteger('idProduct');
             $table->integer('quantity');
             $table->integer('price');
-            $table->foreign('idOrder')->references('idOrder')->on('orders')->onDelete('cascade');
-            $table->foreign('idProduct')->references('idProduct')->on('products')->onDelete('cascade');
+            $table->foreign('idOrder')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('idProduct')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -14,13 +14,13 @@ class CreateInvoiceLinesTable extends Migration
     public function up()
     {
         Schema::create('invoice_lines', function (Blueprint $table) {
-            $table->id('invoiceLine');
+            $table->id();
             $table->unsignedBigInteger('idInvoice');
             $table->unsignedBigInteger('idProduct');
             $table->integer('quantity');
             $table->integer('price');
-            $table->foreign('idInvoice')->references('idInvoice')->on('invoices')->onDelete('cascade');
-            $table->foreign('idProduct')->references('idProduct')->on('products')->onDelete('cascade');
+            $table->foreign('idInvoice')->references('id')->on('invoices')->onDelete('cascade');
+            $table->foreign('idProduct')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

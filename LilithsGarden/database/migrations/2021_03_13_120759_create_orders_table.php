@@ -14,10 +14,10 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id('idOrder');
+            $table->id();
             $table->unsignedBigInteger('idClient');
             $table->string('deliveryAddress');
-            $table->foreign('idClient')->references('idClient')->on('clients')->onDelete('cascade');
+            $table->foreign('idClient')->references('id')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
     }
