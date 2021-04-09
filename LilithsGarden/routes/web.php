@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InicioController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\CuentaController;
-use App\Http\Controllers\CarritoController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,18 +15,12 @@ use App\Http\Controllers\CarritoController;
 |
 */
 
-Route::get('/', InicioController::class)->name('home.inicio');
+Route::get('/', function () {
+    return view('index');
+});
 
-Route::get('cuenta', [CuentaController::class, 'show'])->name('cuenta.mostrar');
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('productos/categorias', CategoriaController::class);
+Route::resource('productos', ProductoController::class);
 
-Route::get('cuenta/registro', [CuentaController::class, 'create'])->name('registro.crear');
-
-Route::get('cuenta/inicio-sesion', [CuentaController::class, 'login'])->name('registro.login');
-
-Route::post('cuenta', [CuentaController::class, 'almacenar'])->name('cuenta.almacenar');
-
-Route::get('carrito', [CarritoController::class, 'show'])->name('carrito.mostrar');
-
-Route::get('productos/{id}', [ProductoController::class, 'showProducto'])->name('producto.mostrar');
-
-Route::get('productos/categorias/{categoria}', [ProductoController::class, 'showCategoria'])->name('categoria.mostrar');
