@@ -15,12 +15,12 @@ class CreateOrderLinesTable extends Migration
     {
         Schema::create('order_lines', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idOrder');
-            $table->unsignedBigInteger('idProduct');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
             $table->integer('price');
-            $table->foreign('idOrder')->references('id')->on('orders')->onDelete('cascade');
-            $table->foreign('idProduct')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

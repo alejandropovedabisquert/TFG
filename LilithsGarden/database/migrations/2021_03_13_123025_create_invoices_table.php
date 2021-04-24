@@ -15,12 +15,12 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idOrder');
-            $table->unsignedBigInteger('idClient');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('deliveryAddress');
             $table->integer('taxBase');
-            $table->foreign('idClient')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('idOrder')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -1,0 +1,32 @@
+.header,
+.footer {
+    background-color: #FFEBEC !important;
+}
+
+.sub-header {
+    background-color: #DC939F !important;
+    position: static;
+}
+
+img {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    /* width: 50% !important; */
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    /* Margin bottom by footer height */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

@@ -53,6 +53,8 @@
                             </div>
                         </div>
 
+                        <input id="role" type="hidden" class="form-control" name="role" value="0" required>
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -78,7 +80,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registro') }}
                                 </button>
                             </div>
                         </div>

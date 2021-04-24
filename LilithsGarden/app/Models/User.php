@@ -19,6 +19,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'deliveryAddress',
+        'role',
+        'slug',
         'email',
         'password',
     ];
@@ -41,4 +43,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //Relacion uno a muchos
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -13,4 +13,18 @@ class Product extends Model
     {
         return 'slug';
     }
+
+    //Relacion muchos a muchos
+    public function categorias(){
+        return $this->belongsToMany(Category::class);
+    }
+
+    //Relacion uno a muchos
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function photos(){
+        return $this->hasMany(Photo::class);
+    }
 }
