@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BuscadorController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\RelacionController;
 use App\Http\Controllers\UserController;
@@ -33,7 +37,7 @@ Route::group(['middleware' => 'admin'], function (){
     
     //Relacion categoria producto
     Route::get('productos/categorias/relacion/create', [RelacionController::class, 'create'])->name('relacion.create');
-    Route::get('productos/categorias/relacion', [RelacionController::class, 'store'])->name('relacion.store');
+    Route::post('productos/categorias/relacion', [RelacionController::class, 'store'])->name('relacion.store');
 
     //Categorias
     Route::get('productos/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
@@ -61,8 +65,26 @@ Route::group(['middleware' => 'admin'], function (){
 //Usuarios
 Route::resource('usuarios', UserController::class);
 
+//Rutas con inicio de sesion obligatorio
+Route::group(['middleware' => 'auth'], function(){
+    //Carrito
+    Route::get('carrito', [CartController::class , 'checkout'])->name('cart.checkout');
+    Route::post('anyadir-carrito/{producto}', [CartController::class, 'add'])->name('cart.add');
+    Route::post('limpiar-carrito', [CartController::class, 'clear'])->name('cart.clear');
+    Route::get('actualizar-carrito/{producto}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('borrar-carrito/{producto}', [CartController::class, 'delete'])->name('cart.delete');
+
+    //Comentarios
+    Route::post('comentario', [ComentarioController::class, 'store'])->name('comentario.store');
+
+    //pedidos
+    Route::post('pedido', [PedidoController::class, 'store'])->name('pedido.store');
+});
+
+
 //Rutas publicas
 Route::get('productos/categorias/{categoria}', [CategoriaController::class, 'show'])->name('categorias.show');
 Route::get('productos/{producto}', [ProductoController::class, 'show'])->name('productos.show');
+Route::get('buscar/productos', [BuscadorController::class, 'buscar'])->name('buscador.productos');
 
 

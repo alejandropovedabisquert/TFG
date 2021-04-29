@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class ProductoController extends Controller
 
     public function show(Product $producto){
         $imagenes = $producto->photos;
-        return view('productos.producto', compact('producto', 'imagenes'));
+        $comentarios = $producto->comments;
+        return view('productos.producto', compact('producto', 'imagenes', 'comentarios'));
     }
 }

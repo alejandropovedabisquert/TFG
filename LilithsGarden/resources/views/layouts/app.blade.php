@@ -10,18 +10,26 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
-
+    
+    
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+
 </head>
 
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top header">
             <a class="navbar-brand mx-5" href="{{ url('/') }}">
@@ -71,6 +79,7 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav  mx-5">
+
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
@@ -85,10 +94,19 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item">
+                            <!-- Button trigger modal -->
+                            <a class="nav-link" class="btn" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="bi bi-search icono-nav"></i>
+                            </a>
+
+                        </li>
+                       
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                <i class="bi bi-person-circle icono-nav"></i>
+                                {{-- {{ Auth::user()->name }} --}}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -109,6 +127,14 @@
                                     @csrf
                                 </form>
                             </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('cart.checkout') }}">
+                                    <i class="bi bi-basket-fill icono-nav"></i>
+                                    <span class="badge badge-danger">
+                                        {{Cart::session(auth()->id())->getContent()->count()}}
+                                    </span>
+                                </a>
+                            </li>
                         </li>
                     @endguest
                 </ul>
@@ -136,5 +162,20 @@
             </p>
         </footer>
     </div>
-
+      
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            {{-- Buscador --}}
+            <a type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></a>
+            <form action="{{ route('buscador.productos') }}">
+                <input class="form-control" name="pregunta" placeholder="Buscar productos">
+            </form> 
+        </div>
+      </div>
+    </div>
+  </div>
 </html>
+

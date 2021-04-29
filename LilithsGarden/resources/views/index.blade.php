@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Inicio')
+
 @section('content')
     <div id="infoBanner" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -41,6 +42,10 @@
                     </div>
                 </div>
             </a>
+            <form action="{{route('cart.add', $producto)}}" method="post">
+                @csrf
+                <input type="submit" name="btn" class="btn btn-success" value="Añadir al carrito">
+            </form>
             </div>
         @endforeach
         </div>
@@ -49,3 +54,4 @@
         <h3 class="text-center mb-0 p-2"><b>{{ 'Datos de interes' }}</b></h3>
     </nav>
 @endsection
+
