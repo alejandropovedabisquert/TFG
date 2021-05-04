@@ -10,19 +10,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Scripts -->
-    <script src="{{asset('js/app.js') }}" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
 
-    
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
-    
-    
+
+
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
 
@@ -48,29 +51,46 @@
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jueguetes</a>
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">{{ 'Juguetes' }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                    <a class="dropdown-item" href="{{ route('categorias.show', 'vibrador') }}">{{__('Vibradores')}}</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'vibrador') }}">{{ 'Vibradores' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'succionador') }}">{{ 'Succionadores' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'bolas-chinas') }}">{{ 'Bolas chinas' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'para-el-pene') }}">{{ 'Para el pene' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'sexo-anal') }}">{{ 'Sexo anal' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'bdsm') }}">{{ 'BDSM' }}</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cosmeticos</a>
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">{{ 'Cosmeticos' }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'lubricante') }}">{{ 'Lubricantes' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'afrodisiaco') }}">{{ 'Afrodisiacos' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'estimulantes-y-retardantes') }}">{{ 'Estimulantes y retardantes' }}</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Esenciales</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'lenceria') }}">{{ 'Lenceria' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'juegos-eroticos') }}">{{ 'Juegos eróticos' }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('categorias.show', 'preservativos') }}">{{ 'Preservativos' }}</a>
                                 </div>
                             </li>
                         </ul>
@@ -79,29 +99,35 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav  mx-5">
+                    {{-- Buscador --}}
+                    <li class="nav-item">
+                        <!-- Button trigger modal -->
+                        <a class="nav-link" class="btn" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <i class="bi bi-search icono-nav"></i>
+                        </a>
 
+                    </li>
                     <!-- Authentication Links -->
                     @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
-                            </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item">
-                            <!-- Button trigger modal -->
-                            <a class="nav-link" class="btn" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <i class="bi bi-search icono-nav"></i>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="bi bi-person-circle icono-nav"></i>
                             </a>
 
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if (Route::has('login'))
+                                    <a class="dropdown-item"
+                                        href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
+                                @endif
+
+                                @if (Route::has('register'))
+                                    <a class="dropdown-item"
+                                        href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                                @endif
+                            </div>
                         </li>
-                       
+                    @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -119,7 +145,7 @@
                                 @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                                 document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar sesión') }}
                                 </a>
 
@@ -127,55 +153,57 @@
                                     @csrf
                                 </form>
                             </div>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('cart.checkout') }}">
-                                    <i class="bi bi-basket-fill icono-nav"></i>
-                                    <span class="badge badge-danger">
-                                        {{Cart::session(auth()->id())->getContent()->count()}}
-                                    </span>
-                                </a>
-                            </li>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart.checkout') }}">
+                                <i class="bi bi-basket-fill icono-nav"></i>
+                                <span class="badge badge-danger">
+                                    {{ Cart::session(auth()->id())->getContent()->count() }}
+                                </span>
+                            </a>
                         </li>
                     @endguest
                 </ul>
             </div>
         </nav>
         <nav class="navbar-expand-lg navbar-light shadow-sm sticky-top sub-header">
-            <p class="text-center mb-0"><b>{{'Eslogan de la empresa'}}</b></p>
+            <p class="text-center mb-0"><b>{{ 'Eslogan de la empresa' }}</b></p>
         </nav>
 
         <main>
             @yield('content')
         </main>
         <!-- Footer -->
-        <br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br>
         <footer class="footer">
-            <img src="{{URL::asset('storage/uploads/logo/asus-logo-0.png')}}" alt="" width="300px">
+            <img src="{{ URL::asset('storage/uploads/logo/asus-logo-0.png') }}" alt="" width="300px">
             <p class="text-center mb-0">
-                {{'RRSS'}} 
-            <br>
-                <a href="">{{'Quienes somos'}}</a> | <a href="">{{'Politica de privacidad'}}</a> | <a href="">{{'Aviso legal'}}</a> | <a href="">{{'Contacto'}}</a>
-            <br>
-                {{'Copyright'}}&copy; {{ 'Liliths Garden' }} {{date('Y')}}. {{'Todos los derechos reservados.'}} 
-            <br>
-                {{'Todos los precios de productos, servicios o gastos de envío mostrados en esta página incluyen el IVA correspondiente'}}
+                {{ 'RRSS' }}
+                <br>
+                <a href="">{{ 'Quienes somos' }}</a> | <a href="">{{ 'Politica de privacidad' }}</a> | <a
+                    href="">{{ 'Aviso legal' }}</a> | <a href="">{{ 'Contacto' }}</a>
+                <br>
+                {{ 'Copyright' }}&copy; {{ 'Liliths Garden' }} {{ date('Y') }}.
+                {{ 'Todos los derechos reservados.' }}
+                <br>
+                {{ 'Todos los precios de productos, servicios o gastos de envío mostrados en esta página incluyen el IVA correspondiente' }}
             </p>
         </footer>
     </div>
-      
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-            {{-- Buscador --}}
-            <a type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></a>
-            <form action="{{ route('buscador.productos') }}">
-                <input class="form-control" name="pregunta" placeholder="Buscar productos">
-            </form> 
-        </div>
-      </div>
-    </div>
-  </div>
-</html>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    {{-- Buscador --}}
+                    <a type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></a>
+                    <form action="{{ route('buscador.productos') }}" class="p-3">
+                        <input class="form-control" name="pregunta" placeholder="Buscar productos">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</html>

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', 'Inicio')
 @section('content')
-    <h1>Aqui ira la pagina de inicio del administrador</h1>
 
-    <div class="container">
+<div class="container">
+        <h1>Administración</h1>
 
         <div class="row justify-content-center">
             <div class="col-md-8">

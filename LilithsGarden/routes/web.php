@@ -70,7 +70,6 @@ Route::group(['middleware' => 'auth'], function(){
     //Carrito
     Route::get('carrito', [CartController::class , 'checkout'])->name('cart.checkout');
     Route::post('anyadir-carrito/{producto}', [CartController::class, 'add'])->name('cart.add');
-    Route::post('limpiar-carrito', [CartController::class, 'clear'])->name('cart.clear');
     Route::get('actualizar-carrito/{producto}', [CartController::class, 'update'])->name('cart.update');
     Route::get('borrar-carrito/{producto}', [CartController::class, 'delete'])->name('cart.delete');
 

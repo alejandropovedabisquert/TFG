@@ -10,6 +10,7 @@ class BuscadorController extends Controller
     public function buscar(Request $request){
         $pregunta = $request->get('pregunta');
         $productos = Product::where('name', 'LIKE', '%'.$pregunta.'%')->get();
-        return view('productos.busqueda', compact('productos'));
+        $comprobarExistencia = $productos->isEmpty();
+        return view('productos.busqueda', compact('productos', 'comprobarExistencia', 'pregunta'));
     }
 }

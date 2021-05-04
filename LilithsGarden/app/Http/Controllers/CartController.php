@@ -14,19 +14,20 @@ class CartController extends Controller
             'quantity' => 1,
             'associatedModel' => $producto
         ));
-        return back();
+        return back()->with('success', 'Producto añadido al carrito satisfactoriamente!');
         
     }
     
     public function checkout(){
         $cartItems = \Cart::session(auth()->id())->getContent();
-        return view('carrito.index', compact('cartItems'));
+        $numeroLineas = 1;
+        return view('carrito.index', compact('cartItems', 'numeroLineas'));
         
     }
 
     public function delete($producto){
         \Cart::session(auth()->id())->remove($producto);
-        return back();
+        return back()->with('success', 'Producto se ha borrado del carrito satisfactoriamente!');
         
     }
 
@@ -35,7 +36,8 @@ class CartController extends Controller
             'quantity' => array(
                 'relative' => false,
                 'value' => request('quantity')
-            )
+            ),
+             
         ]);
         return back();
         

@@ -63,6 +63,8 @@ class ProductoController extends Controller
     public function show(Product $producto){
         $imagenes = $producto->photos;
         $comentarios = $producto->comments;
-        return view('productos.producto', compact('producto', 'imagenes', 'comentarios'));
+        $numeroVisorImagenes = 1;
+        $categorias = Product::find($producto->id)->categorias()->get();
+        return view('productos.producto', compact('producto', 'imagenes', 'comentarios', 'numeroVisorImagenes', 'categorias'));
     }
 }

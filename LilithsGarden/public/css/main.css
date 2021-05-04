@@ -22,7 +22,6 @@ html {
 
 body {
     margin-bottom: 60px;
-    /* Margin bottom by footer height */
 }
 
 .footer {
@@ -33,4 +32,41 @@ body {
 
 .icono-nav {
     font-size: 2rem;
+}
+
+.cartas-inicio {
+    border: 1px solid rgba(255, 255, 255, 0) !important;
+}
+
+.enlaces-productos {
+    color: black;
+    text-decoration: none;
+}
+
+.enlaces-productos:hover {
+    color: black;
+}
+
+.card-img-top {
+    width: 200px !important;
+}
+
+.card-img-top:hover {
+    transform: scale(0.7);
+    transition: 0.7s;
+}
+
+.producto-flotante {
+    position: relative;
+    top: 10%;
+    left: 50%;
+}
+
+.carta-formulario {
+    margin-top: 15%;
+}
+
+.cabeceras-cartas {
+    font-weight: bold;
+    background-color: #DC939F !important;
 }

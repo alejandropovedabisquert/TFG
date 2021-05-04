@@ -7,9 +7,9 @@
         @foreach ($categorias as $categoria)
             <div class="col p-2">
                 <div class="card">
-                    <a href="{{route('categorias.show', $categoria->slug)}}">
+                    <a href="{{route('categorias.show', $categoria->slug)}}" class="enlaces-productos">
                     <div class="card-body">
-                        <div class="col">{{$categoria->name}}</div>
+                        <div class="col"><b>{{$categoria->name}}</b></div>
 
                     </div>
                 </a>
