@@ -24,6 +24,10 @@ body {
     margin-bottom: 60px;
 }
 
+main {
+    margin-bottom: 500px;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -66,7 +70,25 @@ body {
     margin-top: 15%;
 }
 
+.carta-usuario {
+    margin-top: 10%;
+}
+
 .cabeceras-cartas {
     font-weight: bold;
     background-color: #DC939F !important;
+}
+
+.requerido {
+    color: red;
+    font-size: 25px;
+}
+
+.menu-header {
+    margin-right: 50px;
+}
+
+.comentario {
+    width: 600px;
+    display: inline;
 }

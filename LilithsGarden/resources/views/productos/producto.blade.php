@@ -1,37 +1,40 @@
 @extends('layouts.app')
 @section('title', $producto->name)
-    <script src="{{ asset('js/visorProductos.js') }}" defer></script>
+    
     <link rel="stylesheet" href="{{ asset('css/visorProductos.css') }}" />
 @section('content')
     <div class="container">
-        <h1>Aqui ira la pagina del producto {{ $producto->name }}</h1>
         @if (session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
             </div>
         @endif
 
-        <!-- Container for the image gallery -->
         <div class="row">
+            <!-- Container for the image gallery -->
             <div class="col">
-                @foreach ($imagenes as $imagen)
-                    <!-- Full-width images with number text -->
-                    <div class="mySlides">
-                        <img src="{{ URL::asset('storage/' . $imagen->url) }}" style="width:40%">
-                    </div>
-                @endforeach
-                <!-- Next and previous buttons -->
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                <div class="row">
+                @if ($comprobarExistencia)
+                    <h3>Este producto no contiene imágenes</h3>
+                @else
                     @foreach ($imagenes as $imagen)
-                        <div class="col">
-                            <img class="demo cursor" src="{{ URL::asset('storage/' . $imagen->url) }}" width="70%"
-                                onclick="currentSlide({{ $numeroVisorImagenes++ }})">
+                        <!-- Full-width images with number text -->
+                        <div class="mySlides">
+                            <img src="{{ URL::asset('storage/' . $imagen->url) }}" style="width:40%">
                         </div>
                     @endforeach
-                </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <div class="row">
+                        @foreach ($imagenes as $imagen)
+                            <div class="col">
+                                <img class="demo cursor" src="{{ URL::asset('storage/' . $imagen->url) }}" width="70%"
+                                    onclick="currentSlide({{ $numeroVisorImagenes++ }})">
+                            </div>
+                        @endforeach
+                    </div>
 
+                @endif
             </div>
             <div class="col">
                 <div class="card w-50 producto-flotante">
@@ -53,7 +56,8 @@
 
             </div>
         </div>
-        <div class="container">
+
+        <div class="container mt-5">
             <h4>Descripción de {{ $producto->name }},
                 @foreach ($categorias as $categoria)
                     {{ $categoria->name }}
@@ -64,32 +68,36 @@
         </div>
 
         {{-- Comentarios --}}
-        <div class="container">
-            <h4>{{'Comentarios'}}</h4>
-            @foreach ($comentarios as $comentario)
-                <p><b>{{ 'Anónimo' }}</b>{{ ', creado el ' }}{{ $comentario->created_at }}</p>
-                <p>{{ $comentario->comment }}</p>
-                <hr>
-            @endforeach
+        <div class="container mt-5">
+            <div class="container">
+                <h4>{{ 'Comentarios' }}</h4>
+                @foreach ($comentarios as $comentario)
+                    <p><b>{{$comentario->user->name}}</b>{{ ', creado el ' }}{{ $comentario->created_at }}</p>
+                    <p>{{ $comentario->comment }}</p>
+                    <hr>
+                @endforeach
+
+                {{ $comentarios->links() }}
+            </div>
             @if (Auth::check())
+            <h4 class="mt-5">{{'Coméntanos que te ha parecido el producto '}}{{ $producto->name }}</h4>
                 <form action="{{ route('comentario.store') }}" method="post">
                     @csrf
-                    <div class="bg-light p-2">
-                        <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}">
-                        <input type="hidden" name="product_id" id="product_id" value="{{ $producto->id }}">
-                        <input type="hidden" name="rating" id="rating" value="5">
+                    <div class="p-2">
+                        <input type="hidden" name="product_id" id="product_id" value="{{ $producto->id }}" style="display: none;">
                         <div class="form-floating">
-                            <textarea class="form-control ml-1 shadow-none textarea @error('description') is-invalid @enderror"
-                                name="comment" id="comentarioFlotante" style="height: 200px"></textarea>
-                                <label for="comentarioFlotante">Deja un comentario</label>
+                            <textarea
+                            class="form-control ml-1 shadow-none textarea @error('comentario') is-invalid @enderror"
+                            name="comentario" id="comentarioFlotante" style="height: 200px"></textarea>
+                            @error('comentario')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="comentarioFlotante">Deja un comentario</label>
+                            <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none"
+                                    type="submit">{{ 'Envia un comentario' }}</button></div>
                         </div>
-                        <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none"
-                                type="submit">{{ 'Envia un comentario' }}</button></div>
-                        @error('description')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
 
                     </div>
                 </form>
@@ -98,4 +106,5 @@
 
     </div>
 
+    <script src="{{ asset('js/visorProductos.js') }}" defer></script>
 @endsection

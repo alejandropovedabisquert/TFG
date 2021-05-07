@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ asset('storage/uploads/logo/icono-liliths-garden.png') }}">
     <title>@yield('title') | Lilith's Garden</title>
 
     <!-- CSRF Token -->
@@ -35,8 +36,9 @@
 
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top header">
-            <a class="navbar-brand mx-5" href="{{ url('/') }}">
-                {{ 'Liliths Garden' }}
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ URL::asset('storage/uploads/logo/logo-header-liliths-garden.png') }}" alt=""
+                    width="300vh">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -49,7 +51,7 @@
                 <nav class="navbar m-auto">
                     <div class="container-fluid">
                         <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown menu-header">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
                                     data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">{{ 'Juguetes' }}</a>
@@ -68,7 +70,7 @@
                                         href="{{ route('categorias.show', 'bdsm') }}">{{ 'BDSM' }}</a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown menu-header">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                     data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">{{ 'Cosmeticos' }}</a>
@@ -139,13 +141,15 @@
                                 <a class="dropdown-item"
                                     href="{{ route('usuarios.show', Auth::user()) }}">{{ __('Perfil') }}</a>
 
+                                <a class="dropdown-item" href="{{ route('pedidos.pedidos') }}">{{ __('Pedidos') }}</a>
+
                                 @if (Auth::user()->role == 1)
                                     <a class="dropdown-item"
                                         href="{{ route('administrador.show') }}">{{ __('Administracion') }}</a>
                                 @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                                                                     document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar sesión') }}
                                 </a>
 
@@ -167,26 +171,30 @@
             </div>
         </nav>
         <nav class="navbar-expand-lg navbar-light shadow-sm sticky-top sub-header">
-            <p class="text-center mb-0"><b>{{ 'Eslogan de la empresa' }}</b></p>
+            <p class="text-center mb-0"><b>{{ 'El jardín de los pecados más puros' }}</b></p>
         </nav>
 
         <main>
             @yield('content')
         </main>
         <!-- Footer -->
-        <br><br><br><br><br><br><br><br><br><br><br>
         <footer class="footer">
-            <img src="{{ URL::asset('storage/uploads/logo/asus-logo-0.png') }}" alt="" width="300px">
-            <p class="text-center mb-0">
-                {{ 'RRSS' }}
-                <br>
-                <a href="">{{ 'Quienes somos' }}</a> | <a href="">{{ 'Politica de privacidad' }}</a> | <a
-                    href="">{{ 'Aviso legal' }}</a> | <a href="">{{ 'Contacto' }}</a>
-                <br>
+            <a href="{{ url('/') }}"> <img
+                    src="{{ URL::asset('storage/uploads/logo/logo-footer-liliths-garden.png') }}" class="mb-4" alt=""
+                    width="200vh"></a>
+            <p class="text-center m-0">
+            <p class="text-center m-0"><span class="p-3"><i class="bi bi-instagram icono-nav"></i></span><span
+                    class="p-3"><i class="bi bi-twitter icono-nav"></i></span><span class="p-3"><i
+                        class="bi bi-facebook icono-nav"></i></span></p>
+            <p class="text-center m-0"><a href="">{{ 'Quienes somos' }}</a> | <a
+                    href="">{{ 'Politica de privacidad' }}</a> | <a href="">{{ 'Aviso legal' }}</a> | <a
+                    href="{{ route('contactanos.index') }}">{{ 'Contacto' }}</a></p>
+            <p class="text-center m-0">
                 {{ 'Copyright' }}&copy; {{ 'Liliths Garden' }} {{ date('Y') }}.
-                {{ 'Todos los derechos reservados.' }}
-                <br>
+                {{ 'Todos los derechos reservados.' }}</p>
+            <p class="text-center m-0">
                 {{ 'Todos los precios de productos, servicios o gastos de envío mostrados en esta página incluyen el IVA correspondiente' }}
+            </p>
             </p>
         </footer>
     </div>

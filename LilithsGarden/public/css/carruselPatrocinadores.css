@@ -1,0 +1,20 @@
+.tech-slideshow {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.mover {
+    margin: auto;
+    width: 1939px;
+    height: 125px;
+    background-image: url("/storage/uploads/patrocinios/slider-patrocinios.png");
+    background-size: 100% 100%;
+    animation: slider 10s infinite linear;
+}
+
+@keyframes slider {
+    to {
+        background-position: 500px;
+    }
+}

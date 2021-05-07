@@ -2,7 +2,7 @@
 @section('title', 'Administracion')
 @section('content')
     <div class="container">
-        <h1>Pagina para crear categorias</h1>
+        <h1>Editar categoría</h1>
         @if (session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -13,14 +13,15 @@
                 <div class="card">
                     <div class="card-header">{{ __('Categoria') }}</div>
                     <div class="card-body">
-                        <form action="{{ route('categorias.store') }}" method="POST">
+                        <form action="{{ route('categorias.update', $categoria) }}" method="POST">
                             @csrf
+                            @method('put')
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                        name="name" required autofocus>
+                                        name="name" value="{{ $categoria->name }}" required autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -33,7 +34,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Crear Categoria') }}
+                                        {{ __('Editar Categoria') }}
                                     </button>
                                 </div>
                             </div>

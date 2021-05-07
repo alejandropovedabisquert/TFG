@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <h1>Usuarios</h1>
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
         <div class="row row-cols-2 row-cols-md-4">
             @foreach ($usuarios as $usuario)
                 <div class="col p-2">

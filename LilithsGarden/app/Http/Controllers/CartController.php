@@ -20,14 +20,21 @@ class CartController extends Controller
     
     public function checkout(){
         $cartItems = \Cart::session(auth()->id())->getContent();
+        $comprobarExistencia = $cartItems->isEmpty();
         $numeroLineas = 1;
-        return view('carrito.index', compact('cartItems', 'numeroLineas'));
+        return view('carrito.index', compact('cartItems', 'numeroLineas', 'comprobarExistencia'));
         
     }
 
     public function delete($producto){
         \Cart::session(auth()->id())->remove($producto);
         return back()->with('success', 'Producto se ha borrado del carrito satisfactoriamente!');
+        
+    }
+
+    public function clear(){
+        \Cart::session(auth()->id())->clear();
+        return back();
         
     }
 

@@ -27,13 +27,27 @@ class CategoriaController extends Controller
             $categoria->slug = $slug;
             $categoria->save();
     
-            return redirect()->route('categorias.create');
+            return redirect()->route('categorias.create')->with('success','¡La categoría "'.$request->name.'" se ha creado correctamente!');
 
     }
-    public function delete(Category $categoria)
+
+    public function edit(Category $categoria){
+        return view('productos.categorias.edit', compact('categoria'));
+        
+    }
+
+    public function update(Request $request, Category $categoria)
+    {
+        $categoria->name = $request->name;
+        $categoria->save();
+        return back()->with('success','¡La categoría se ha editado correctamente a "'.$request->name.'"!');
+
+    }
+
+    public function destroy(Category $categoria)
     {
             $categoria->delete();
-            return redirect()->route('categorias.index');
+            return redirect()->route('categorias.index')->with('success','¡La categoría "'.$categoria->name.'" se ha eliminado correctamente!');
 
     }
 

@@ -21,9 +21,13 @@ class Product extends Model
 
     //Relacion uno a muchos
     public function comments(){
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->paginate(5);
     }
     public function photos(){
         return $this->hasMany(Photo::class);
     }
+    public function orderLine(){
+        return $this->hasOne(OrderLine::class);
+    }
+
 }

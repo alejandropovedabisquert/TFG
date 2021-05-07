@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Editar usuario') }}</div>
+            <div class="card carta-usuario">
+                <div class="card-header cabeceras-cartas">{{ __('Editar usuario') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('usuarios.update', $usuario) }}">
@@ -77,6 +77,8 @@
                                 @enderror
                             </div>
                         </div>
+                        @else
+                        <input type="hidden" name="role" value="0">
                         @endif
 
                         <div class="form-group row mb-0">
@@ -90,6 +92,12 @@
                 </div>
             </div>
         </div>
+        @if (Auth::check())
+            @if (auth()->user()->role == 1)
+            <a href="{{ route('administrador.show') }}"><button class="btn btn-primary">Administación</button></a>
+                
+            @endif
+        @endif
     </div>
 </div>
 @endsection

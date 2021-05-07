@@ -13,6 +13,7 @@ class PedidoController extends Controller
         $nuevoPedido = new Order();
         $nuevoPedido->user_id = $request->user_id;
         $nuevoPedido->deliveryAddress = $request->deliveryAddress;
+        $nuevoPedido->totalPrice = $request->totalPrice;
         $nuevoPedido->save();
 
         $pedidos = Order::get();
@@ -31,7 +32,22 @@ class PedidoController extends Controller
         }
 
 
+        return redirect()->route('cart.clear');
+    }
 
-        return back();
+    public function pedidos(){
+        $usuario = auth()->user();
+        $pedidosUsuario = $usuario->order;
+        $comprobarExistencia = $pedidosUsuario->isEmpty();
+        return view('usuarios.pedidos.pedidos', compact('pedidosUsuario', 'comprobarExistencia'));
+    }
+
+    public function lineasPedido(Order $pedido){
+        if ($pedido->user_id == auth()->user()->id) {
+            $lineasPedido = $pedido->orderLines;
+            return view('usuarios.pedidos.lineasPedido', compact('lineasPedido', 'pedido'));
+        }else {
+            return back();
+        }
     }
 }

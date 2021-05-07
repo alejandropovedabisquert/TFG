@@ -1,17 +1,17 @@
 @extends('layouts.app')
 @section('title', 'Inicio')
-
+<link rel="stylesheet" href="{{ asset('css/carruselPatrocinadores.css') }}" />
 @section('content')
     <div id="infoBanner" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{URL::asset('storage/uploads/carrusel/banner-web-pene-recurso-desktop.webp')}}" alt="...">
+                <a href="{{ route('categorias.show', 'para-el-pene') }}"><img src="{{URL::asset('storage/uploads/carrusel/banner-web-pene-recurso-desktop.webp')}}" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <img src="{{URL::asset('storage/uploads/carrusel/banner-web-vulva-recurso-desktop.webp')}}" alt="...">
+                <a href="{{ route('categorias.show', 'para-la-vulva') }}"><img src="{{URL::asset('storage/uploads/carrusel/banner-web-vulva-recurso-desktop.webp')}}" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <img src="{{URL::asset('storage/uploads/carrusel/klarna-pagar-plazos-financiar-desktop.webp')}}" alt="...">
+                <a href="{{ route('categorias.show', 'vibrador') }}"><img src="{{URL::asset('storage/uploads/carrusel/klarna-pagar-plazos-financiar-desktop.png')}}" alt="..."></a>
             </div>
         </div>
         <a class="carousel-control-prev" href="#infoBanner" role="button" data-slide="prev">
@@ -40,37 +40,15 @@
                         <div class="col text-center">{{$producto->price}}&euro;</div>
                 </div>
             </a>
-            {{-- <form action="{{route('cart.add', $producto)}}" method="post">
-                @csrf
-                <input type="submit" name="btn" class="btn btn-success" value="Añadir al carrito">
-            </form> --}}
             </div>
         @endforeach
         </div>
     </div>
     <nav class="navbar-expand-lg navbar-light shadow-sm header p-2">
-        <h3 class="text-center mb-0 p-2"><b>{{ 'Datos de interes' }}</b></h3>
-        <div id="infoBanner2" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{URL::asset('storage/uploads/carrusel/banner-web-pene-recurso-desktop.webp')}}" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{URL::asset('storage/uploads/carrusel/banner-web-vulva-recurso-desktop.webp')}}" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{URL::asset('storage/uploads/carrusel/klarna-pagar-plazos-financiar-desktop.webp')}}" alt="...">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#infoBanner2" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-              <a class="carousel-control-next" href="#infoBanner2" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-        </div>
+        <h3 class="text-center mb-0 p-2"><b>{{ 'Empresas patrocinadoras' }}</b></h3>
+        <div class="tech-slideshow">
+            <div class="mover"></div>
+          </div>
     </nav>
 @endsection
 

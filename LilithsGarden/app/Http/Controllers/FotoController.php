@@ -26,7 +26,7 @@ class FotoController extends Controller
             $foto->save();
                
         }
-        return redirect()->route('foto.create');
+        return redirect()->route('foto.create')->with('success','¡La imagen se ha insertado en el producto "'.$producto->name.'" correctamente!');
         
 
     }

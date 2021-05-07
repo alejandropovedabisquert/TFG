@@ -44,7 +44,7 @@ class UserController extends Controller
             $usuario->password = bcrypt($request->password);
             $usuario->save();
         }
-        return redirect()->route('usuarios.show', $usuario);
+        return redirect()->route('usuarios.show', $usuario)->with('success','El usuario se ha editado correctamente!');
         }else {
             return redirect()->route('usuarios.edit', Auth::user()->id);
         }
@@ -55,6 +55,7 @@ class UserController extends Controller
     {
         if (Auth::user()->role == 1) {
             $usuario->delete();
+            return redirect()->route('usuarios.index')->with('success','El usuario "'.$usuario->name.'" se ha eliminado correctamente!');
         }else {
             return redirect()->route('usuarios.show', $usuario->id);
         }

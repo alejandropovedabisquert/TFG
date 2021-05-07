@@ -6,9 +6,9 @@
         <h1>Administración</h1>
 
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-8 mt-5">
                 <div class="card">
-                    <div class="card-header">{{ __('Usuarios') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Usuarios') }}</div>
                     <div class="card-body">
                         <div class="col-md-8 offset-md-4">
                             <a href="{{route('usuarios.index')}}"><button type="submit" class="btn btn-primary">
@@ -18,9 +18,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 mt-5">
                 <div class="card">
-                    <div class="card-header">{{ __('Productos') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Productos') }}</div>
                     <div class="card-body">
                         <div class="col-md-8 offset-md-4">
                             <a href="{{route('productos.create')}}"><button type="submit" class="btn btn-primary">
@@ -33,9 +33,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 mt-5">
                 <div class="card">
-                    <div class="card-header">{{ __('Fotos Productos') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Fotos Productos') }}</div>
                     <div class="card-body">
                         <div class="col-md-8 offset-md-4">
                             <a href="{{route('foto.create')}}"><button type="submit" class="btn btn-primary">
@@ -45,9 +45,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 mt-5">
                 <div class="card">
-                    <div class="card-header">{{ __('Categorias') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Categorias') }}</div>
                     <div class="card-body">
                         <div class="col-md-8 offset-md-4">
                             <a href="{{route('categorias.create')}}"><button type="submit" class="btn btn-primary">
@@ -60,9 +60,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 mt-5">
                 <div class="card">
-                    <div class="card-header">{{ __('Relación Categoria Producto') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Relación Categoria Producto') }}</div>
                     <div class="card-body">
                         <div class="col-md-8 offset-md-4">
                             <a href="{{route('relacion.create')}}"><button type="submit" class="btn btn-primary">

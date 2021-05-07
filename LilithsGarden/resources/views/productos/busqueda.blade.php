@@ -5,7 +5,7 @@
         @if ($comprobarExistencia)
             <h1>El producto "{{ $pregunta }}" no existe</h1>
         @else
-            <h1>La busqueda "{{ $pregunta }}" a devuelto {{ $productos->count() }} productos</h1>
+            <h1>La búsqueda "{{ $pregunta }}" ha devuelto {{ $productos->count() }} productos</h1>
             <div class="row row-cols-2 row-cols-md-4">
                 @foreach ($productos as $producto)
                     <div class="col p-2">
