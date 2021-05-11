@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Categoria') }}</div>
                     <div class="card-body">
-                        <form action="{{ route('categorias.update', $categoria) }}" method="POST">
+                        <form action="{{ route('subcategorias.update', $subcategoria) }}" method="POST">
                             @csrf
                             @method('put')
                             <div class="form-group row">
@@ -21,7 +21,7 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                        name="name" value="{{ $categoria->name }}" required autofocus>
+                                        name="name" value="{{ $subcategoria->name }}" required autofocus>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">

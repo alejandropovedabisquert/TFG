@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Crear Categorías')
+@section('title', 'Crear Subategorías')
 @section('content')
     <div class="container">
-        <h1>Pagina para crear categorías</h1>
+        <h1>Pagina para crear subcategorías</h1>
         @if (session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Categoría') }}</div>
+                    <div class="card-header">{{ __('Subcategoría') }}</div>
                     <div class="card-body">
                         <form action="{{ route('subcategorias.store') }}" method="POST">
                             @csrf
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Categoría') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Categoría') }}</label>
 
                                 <div class="col-md-6">
                                     
@@ -51,7 +51,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Crear Categoría') }}
+                                        {{ __('Crear Subcategoría') }}
                                     </button>
                                 </div>
                             </div>

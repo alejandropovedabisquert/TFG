@@ -1,20 +1,37 @@
 .tech-slideshow {
-    width: 100%;
-    margin: auto;
+    height: 250px;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
     overflow: hidden;
+    transform: translate3d(0, 0, 0);
 }
 
-.mover {
-    margin: auto;
-    width: 1939px;
-    height: 125px;
-    background-image: url("/storage/uploads/patrocinios/slider-patrocinios.png");
-    background-size: 100% 100%;
-    animation: slider 10s infinite linear;
+.tech-slideshow>div {
+    height: 200px;
+    width: 11691px;
+    background: url("/storage/uploads/patrocinios/slider-patrocinios2.png");
+    background-repeat: repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translate3d(0, 0, 0);
 }
 
-@keyframes slider {
-    to {
-        background-position: 500px;
+.tech-slideshow .mover-1 {
+    animation: moveSlideshow 24s linear infinite;
+}
+
+.tech-slideshow .mover-2 {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    background-position: 0 -200px;
+    animation: moveSlideshow 27s linear infinite;
+}
+
+@keyframes moveSlideshow {
+    100% {
+        transform: translateX(-66.66666%);
     }
 }

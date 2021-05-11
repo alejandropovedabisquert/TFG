@@ -34,31 +34,41 @@ class UserController extends Controller
 
     public function update(Request $request, User $usuario)
     {
-        if (Auth::user()->id == $usuario->id || Auth::user()->role == 1) {
-        $usuario->name = $request->name;
-        $usuario->deliveryAddress = $request->deliveryAddress;
-        $usuario->role = $request->role;
-        $usuario->save();
-
-        if ( $request->has('password')==null  ) {
-            $usuario->password = bcrypt($request->password);
-            $usuario->save();
+        try {
+            if (Auth::user()->id == $usuario->id || Auth::user()->role == 1) {
+                $usuario->name = $request->name;
+                $usuario->deliveryAddress = $request->deliveryAddress;
+                $usuario->role = $request->role;
+                $usuario->save();
+        
+                if ( $request->has('password')==null  ) {
+                    $usuario->password = bcrypt($request->password);
+                    $usuario->save();
+                }
+                return redirect()->route('usuarios.show', $usuario)->with('success','El usuario se ha editado correctamente!');
+                }else {
+                    return redirect()->route('usuarios.edit', Auth::user()->id);
+                }
+        } catch (\Throwable $th) {
+            abort(403, 'Bad Request');
         }
-        return redirect()->route('usuarios.show', $usuario)->with('success','El usuario se ha editado correctamente!');
-        }else {
-            return redirect()->route('usuarios.edit', Auth::user()->id);
-        }
+        
 
     }
 
     public function destroy(User $usuario)
     {
-        if (Auth::user()->role == 1) {
-            $usuario->delete();
-            return redirect()->route('usuarios.index')->with('success','El usuario "'.$usuario->name.'" se ha eliminado correctamente!');
-        }else {
-            return redirect()->route('usuarios.show', $usuario->id);
+        try {
+            if (Auth::user()->role == 1) {
+                $usuario->delete();
+                return redirect()->route('usuarios.index')->with('success','El usuario "'.$usuario->name.'" se ha eliminado correctamente!');
+            }else {
+                return redirect()->route('usuarios.show', $usuario->id);
+            }
+        } catch (\Throwable $th) {
+            abort(403, 'Bad Request');
         }
+       
        
      
 

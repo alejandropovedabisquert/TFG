@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Administracion')
+@section('title', 'Editar Producto')
 @section('content')
 <div class="container">
        <h1>Editar producto {{$producto->name}}</h1>

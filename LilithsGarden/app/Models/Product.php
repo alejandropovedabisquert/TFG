@@ -15,8 +15,8 @@ class Product extends Model
     }
 
     //Relacion muchos a muchos
-    public function categorias(){
-        return $this->belongsToMany(Category::class);
+    public function subcategorias(){
+        return $this->belongsToMany(Subcategory::class);
     }
 
     //Relacion uno a muchos

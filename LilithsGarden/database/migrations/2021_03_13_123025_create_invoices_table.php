@@ -17,8 +17,6 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('deliveryAddress');
-            $table->integer('taxBase');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();

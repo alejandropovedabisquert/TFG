@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Pedidos')
+@section('title', 'Lineas de pedidos')
 @section('content')
     <div class="container">
         <h1>Productos del pedido {{$pedido->id}}</h1>
@@ -26,7 +26,7 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{route('pedidos.pedidos')}}" role="button" class="btn btn-primary">Volver a los pedidos</a>
+        <a href="{{route('pedidos.pedido')}}" role="button" class="btn btn-primary">Volver a los pedidos</a>
     </div>
 
 @endsection

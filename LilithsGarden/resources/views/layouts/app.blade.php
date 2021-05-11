@@ -45,60 +45,29 @@
                 aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+        
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <nav class="navbar m-auto">
                     <div class="container-fluid">
                         <ul class="navbar-nav">
+                            @foreach ($categorias as $categoria)
                             <li class="nav-item dropdown menu-header">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
                                     data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">{{ 'Juguetes' }}</a>
+                                    aria-expanded="false">{{ $categoria->name }}</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                    @foreach ($categoria->subcategorias as $subcategoria)
                                     <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'vibrador') }}">{{ 'Vibradores' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'succionador') }}">{{ 'Succionadores' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'bolas-chinas') }}">{{ 'Bolas chinas' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'para-el-pene') }}">{{ 'Para el pene' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'sexo-anal') }}">{{ 'Sexo anal' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'bdsm') }}">{{ 'BDSM' }}</a>
+                                    href="{{ route('subcategorias.show', $subcategoria->slug) }}">{{ $subcategoria->name }}</a>
+                                    @endforeach
                                 </div>
                             </li>
-                            <li class="nav-item dropdown menu-header">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">{{ 'Cosmeticos' }}</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'lubricante') }}">{{ 'Lubricantes' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'afrodisiaco') }}">{{ 'Afrodisiacos' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'estimulantes-y-retardantes') }}">{{ 'Estimulantes y retardantes' }}</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Esenciales</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'lenceria') }}">{{ 'Lenceria' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'juegos-eroticos') }}">{{ 'Juegos eróticos' }}</a>
-                                    <a class="dropdown-item"
-                                        href="{{ route('categorias.show', 'preservativos') }}">{{ 'Preservativos' }}</a>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </nav>
-
+        
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav  mx-5">
                     {{-- Buscador --}}
@@ -107,7 +76,7 @@
                         <a class="nav-link" class="btn" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="bi bi-search icono-nav"></i>
                         </a>
-
+        
                     </li>
                     <!-- Authentication Links -->
                     @guest
@@ -116,13 +85,13 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <i class="bi bi-person-circle icono-nav"></i>
                             </a>
-
+        
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if (Route::has('login'))
                                     <a class="dropdown-item"
                                         href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                                 @endif
-
+        
                                 @if (Route::has('register'))
                                     <a class="dropdown-item"
                                         href="{{ route('register') }}">{{ __('Registrarse') }}</a>
@@ -136,23 +105,23 @@
                                 <i class="bi bi-person-circle icono-nav"></i>
                                 {{-- {{ Auth::user()->name }} --}}
                             </a>
-
+        
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item"
                                     href="{{ route('usuarios.show', Auth::user()) }}">{{ __('Perfil') }}</a>
-
-                                <a class="dropdown-item" href="{{ route('pedidos.pedidos') }}">{{ __('Pedidos') }}</a>
-
+        
+                                <a class="dropdown-item" href="{{ route('pedidos.pedido') }}">{{ __('Pedidos') }}</a>
+        
                                 @if (Auth::user()->role == 1)
                                     <a class="dropdown-item"
                                         href="{{ route('administrador.show') }}">{{ __('Administracion') }}</a>
                                 @endif
-
+        
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar sesión') }}
                                 </a>
-
+        
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -173,7 +142,6 @@
         <nav class="navbar-expand-lg navbar-light shadow-sm sticky-top sub-header">
             <p class="text-center mb-0"><b>{{ 'El jardín de los pecados más puros' }}</b></p>
         </nav>
-
         <main>
             @yield('content')
         </main>
@@ -186,9 +154,9 @@
             <p class="text-center m-0"><span class="p-3"><i class="bi bi-instagram icono-nav"></i></span><span
                     class="p-3"><i class="bi bi-twitter icono-nav"></i></span><span class="p-3"><i
                         class="bi bi-facebook icono-nav"></i></span></p>
-            <p class="text-center m-0"><a href="">{{ 'Quienes somos' }}</a> | <a
-                    href="">{{ 'Politica de privacidad' }}</a> | <a href="">{{ 'Aviso legal' }}</a> | <a
-                    href="{{ route('contactanos.index') }}">{{ 'Contacto' }}</a></p>
+            <p class="text-center m-0"><a href="{{route('quienes-somos')}}" class="enlaces">{{ 'Quienes somos' }}</a> | <a
+                    href="" class="enlaces">{{ 'Politica de privacidad' }}</a> | <a href="" class="enlaces">{{ 'Aviso legal' }}</a> | <a
+                    href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Contacto' }}</a></p>
             <p class="text-center m-0">
                 {{ 'Copyright' }}&copy; {{ 'Liliths Garden' }} {{ date('Y') }}.
                 {{ 'Todos los derechos reservados.' }}</p>

@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Administracion')
+@section('title', 'Insertar Imágenes')
 @section('content')
     <div class="container">
-        <h1>Insertar imagenes</h1>
+        <h1>Insertar imágenes</h1>
 
         <div class="row justify-content-center">
             @if (session()->has('success'))
@@ -21,7 +21,7 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Nombre del Producto') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="product" id="product" class="form-control">
+                                    <select name="product" id="product" class="form-select">
                                         @foreach ($productos as $producto)
                                             <option value="{{ $producto->id }}">{{ $producto->name }}</option>
                                         @endforeach

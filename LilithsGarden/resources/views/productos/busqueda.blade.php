@@ -2,7 +2,7 @@
 @section('title', 'Productos')
 @section('content')
     <div class="container">
-        @if ($comprobarExistencia)
+        @if ($productos->isEmpty())
             <h1>El producto "{{ $pregunta }}" no existe</h1>
         @else
             <h1>La búsqueda "{{ $pregunta }}" ha devuelto {{ $productos->count() }} productos</h1>

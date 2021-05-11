@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Productos')
+@section('title', 'Administración Productos')
 @section('content')
     <div class="container">
-        <h1>Todos los productos</h1>
+        <h1>Productos existentes</h1>
         @if (session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -37,5 +37,4 @@
         {{ $productos->links() }}<a href="{{ route('administrador.show') }}"><button
                 class="btn btn-primary">Administación</button></a>
     </div>
-
-@endsection
+    @endsection

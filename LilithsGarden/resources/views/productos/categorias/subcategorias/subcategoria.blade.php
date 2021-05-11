@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', $categoria->name)
+@section('title', $subcategoria->name)
 @section('content')
 <div class="container">
-    <h1>{{$categoria->name}}</h1>
+    <h1>{{$subcategoria->name}}</h1>
     <div class="row row-cols-2 row-cols-md-4">
     @foreach ($productos as $producto)
         <div class="col p-2">

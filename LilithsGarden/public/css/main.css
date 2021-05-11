@@ -15,6 +15,10 @@ img {
     /* width: 50% !important; */
 }
 
+h1 {
+    padding-top: 20px;
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -42,12 +46,18 @@ main {
     border: 1px solid rgba(255, 255, 255, 0) !important;
 }
 
-.enlaces-productos {
+.enlaces-productos,
+.enlaces {
     color: black;
     text-decoration: none;
 }
 
-.enlaces-productos:hover {
+li {
+    list-style: none;
+}
+
+.enlaces-productos:hover,
+.enlaces:hover {
     color: black;
 }
 
@@ -79,6 +89,10 @@ main {
     background-color: #DC939F !important;
 }
 
+#atencion-cliente {
+    font-size: 30px;
+}
+
 .requerido {
     color: red;
     font-size: 25px;
@@ -91,4 +105,8 @@ main {
 .comentario {
     width: 600px;
     display: inline;
+}
+
+.descripcion-producto {
+    line-height: 2;
 }

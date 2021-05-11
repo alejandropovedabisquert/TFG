@@ -9,12 +9,12 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
 
-    public function productos(){
-        return $this->belongsToMany(Product::class);
+    public function subcategorias(){
+        return $this->hasMany(Subcategory::class);
     }
 }

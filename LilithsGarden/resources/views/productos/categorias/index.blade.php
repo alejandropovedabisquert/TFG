@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Administración Categorias')
+@section('title', 'Administración Categorías')
 @section('content')
     <div class="container">
         <h1>Categorías existentes</h1>
@@ -12,12 +12,10 @@
             @foreach ($categorias as $categoria)
                 <div class="col p-2">
                     <div class="card">
-                        <a href="{{ route('categorias.show', $categoria->slug) }}" class="enlaces-productos">
                             <div class="card-body">
                                 <div class="col"><b>{{ $categoria->name }}</b></div>
 
                             </div>
-                        </a>
                         <div class="card-footer text-muted">
                             <form action="{{ route('categorias.destroy', $categoria) }}" method="POST">
                                 @csrf

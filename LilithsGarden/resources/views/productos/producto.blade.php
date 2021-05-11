@@ -12,27 +12,30 @@
 
         <div class="row">
             <!-- Container for the image gallery -->
-            <div class="col">
-                @if ($comprobarExistencia)
+            <div class="col mt-5">
+                @if ($imagenes->isEmpty())
                     <h3>Este producto no contiene imágenes</h3>
                 @else
                     @foreach ($imagenes as $imagen)
                         <!-- Full-width images with number text -->
                         <div class="mySlides">
-                            <img src="{{ URL::asset('storage/' . $imagen->url) }}" style="width:40%">
+                            <img src="{{ URL::asset('storage/' . $imagen->url) }}" style="width:70%">
                         </div>
                     @endforeach
-                    <!-- Next and previous buttons -->
+                    @if ($imagenes->count() != 1)
+                             <!-- Next and previous buttons -->
                     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                     <a class="next" onclick="plusSlides(1)">&#10095;</a>
                     <div class="row">
                         @foreach ($imagenes as $imagen)
                             <div class="col">
-                                <img class="demo cursor" src="{{ URL::asset('storage/' . $imagen->url) }}" width="70%"
+                                <img class="demo cursor" src="{{ URL::asset('storage/' . $imagen->url) }}" width="40%"
                                     onclick="currentSlide({{ $numeroVisorImagenes++ }})">
                             </div>
                         @endforeach
-                    </div>
+                    </div>                 
+                    @endif
+                    
 
                 @endif
             </div>
@@ -41,8 +44,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $producto->name }}</h5>
                         <span class="text-dark card-text">
-                            @foreach ($categorias as $categoria)
-                                {{ $categoria->name }}
+                            @foreach ($subcategorias as $subcategoria)
+                                {{ $subcategoria->name }}
                             @endforeach
                         </span>
                         <p class="card-text">{{ $producto->price }}&euro;</p>
@@ -57,10 +60,10 @@
             </div>
         </div>
 
-        <div class="container mt-5">
+        <div class="container mt-5 w-75 ml-0 descripcion-producto">
             <h4>Descripción de {{ $producto->name }},
-                @foreach ($categorias as $categoria)
-                    {{ $categoria->name }}
+                @foreach ($subcategorias as $subcategoria)
+                    {{ $subcategoria->name }}
                 @endforeach
             </h4>
             <p>{{ $producto->description }}</p>
@@ -106,5 +109,5 @@
 
     </div>
 
+    @endsection
     <script src="{{ asset('js/visorProductos.js') }}" defer></script>
-@endsection

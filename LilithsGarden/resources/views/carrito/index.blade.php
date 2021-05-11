@@ -66,7 +66,7 @@
                         <span class="visually-hidden">{{ $numeroLineas++ }}</span>
                     @endforeach
                     <div class="mt-2 text-right">
-                        <a href="{{route('cart.clear')}}" role="button" class="btn btn-danger">Vaciar carrito</a>
+                        <a href="{{ route('cart.clear') }}" role="button" class="btn btn-danger">Vaciar carrito</a>
                         <button class="btn btn-primary shadow-none" type="submit">{{ 'Comprar' }}</button>
                     </div>
                 </form>

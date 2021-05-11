@@ -3,17 +3,24 @@
 <link rel="stylesheet" href="{{ asset('css/carruselPatrocinadores.css') }}" />
 @section('content')
     <div id="infoBanner" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <a href="{{ route('categorias.show', 'para-el-pene') }}"><img src="{{URL::asset('storage/uploads/carrusel/banner-web-pene-recurso-desktop.webp')}}" alt="..."></a>
-            </div>
-            <div class="carousel-item">
-                <a href="{{ route('categorias.show', 'para-la-vulva') }}"><img src="{{URL::asset('storage/uploads/carrusel/banner-web-vulva-recurso-desktop.webp')}}" alt="..."></a>
-            </div>
-            <div class="carousel-item">
-                <a href="{{ route('categorias.show', 'vibrador') }}"><img src="{{URL::asset('storage/uploads/carrusel/klarna-pagar-plazos-financiar-desktop.png')}}" alt="..."></a>
-            </div>
+
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            @foreach( $carruseles as $carrusel )
+                <li data-target="#infoBanner" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+            @endforeach
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            @foreach( $carruseles as $carrusel )
+                <div class="carousel-item {{ $loop->first ? ' active' : '' }}" >
+                    <img src="{{URL::asset('storage/'.$carrusel->url)}}" alt="...">
+                </div>
+            @endforeach
         </div>
+
+        <!-- Controls -->
         <a class="carousel-control-prev" href="#infoBanner" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -46,9 +53,29 @@
     </div>
     <nav class="navbar-expand-lg navbar-light shadow-sm header p-2">
         <h3 class="text-center mb-0 p-2"><b>{{ 'Empresas patrocinadoras' }}</b></h3>
-        <div class="tech-slideshow">
-            <div class="mover"></div>
+          <div class="tech-slideshow">
+            <div class="mover-1"></div>
+            <div class="mover-2"></div>
           </div>
     </nav>
+    <div class="container">
+        <ul>
+            <li>
+                <b id="atencion-cliente">{{ 'Atención al cliente' }}</b>
+            </li>
+            <li>
+                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Preguntas frecuentes' }}</a>
+            </li>
+            <li>
+                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Acerca de los envios' }}</a>
+            </li>
+            <li>
+                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Política de privacidad' }}</a>
+            </li>
+            <li>
+                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Contacta con nosotros' }}</a>
+            </li>
+        </ul>
+    </div>
 @endsection
 

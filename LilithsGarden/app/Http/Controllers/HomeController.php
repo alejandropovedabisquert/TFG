@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Category_Primary;
 use App\Models\Photo;
 use App\Models\Product;
 use App\Models\User;
@@ -22,9 +24,14 @@ class HomeController extends Controller
      */
     public function __invoke()
     {
-        $productos = Product::paginate(12);
+        $productos = Product::orderBy('created_at', 'desc')->paginate(12);
         return view('index', compact('productos'));
         
+    }
+
+    public function quienes_somos()
+    {
+        return view('paginas-informativas.quienes-somos');
     }
 
 }

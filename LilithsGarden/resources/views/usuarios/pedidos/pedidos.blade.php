@@ -23,12 +23,16 @@
                     <td>{{$pedido->deliveryAddress}}</td>
                     <td>{{$pedido->totalPrice}}&euro;</td>
                     <td>{{$pedido->created_at}}</td> 
-                    <td> <a href="{{route('pedidos.lineasPedido', $pedido)}}" role="button" class="btn btn-primary">Ver detalles</a></td> 
+                    <td> 
+                        <a href="{{route('pedidos.lineasPedido', $pedido)}}" role="button" class="btn btn-info">Ver detalles</a>
+                        <a href="{{route('generador.imprimir', $pedido)}}" role="button" class="btn btn-warning">Factura</a>
+                    </td> 
                 </tr>
                 @endforeach
             </tbody>
         </table>
         @endif
     </div>
+
 
 @endsection
