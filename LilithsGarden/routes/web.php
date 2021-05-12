@@ -40,27 +40,30 @@ Route::group(['middleware' => 'admin'], function (){
     //Mostrara la pantalla de administracion
     Route::get('administrador', [AdminController::class, 'show'])->name('administrador.show');
     
-    //Relacion categoria producto
+    //Usuarios administracion
+    Route::resource('usuarios', UserController::class);
+
+    //Relacion categoria producto administracion
     Route::get('productos/categorias/relacion/create', [RelacionController::class, 'create'])->name('relacion.create');
     Route::post('productos/categorias/relacion', [RelacionController::class, 'store'])->name('relacion.store');
 
-    //Categorias
+    //Categorias administracion
     Route::resource('categorias', CategoriaController::class);
 
-    //Subcategorias
+    //Subcategorias administracion
     Route::resource('subcategorias', SubcategoriaController::class);
 
-    //Carruseles
+    //Carruseles administracion
     Route::resource('carrusel', CarruselController::class);
     
-    //Fotos
+    //Fotos administracion
     Route::get('productos/foto/create', [FotoController::class, 'create'])->name('foto.create');
     Route::post('productos/foto', [FotoController::class, 'store'])->name('foto.store');
 
-    //Productos
+    //Productos administracion
     Route::resource('productos', ProductoController::class);
 
-    //Pedidos
+    //Pedidos administracion
     Route::get('pedidos', [PedidoController::class, 'pedidos'])->name('pedidos.pedidos');
     Route::get('borrar/{pedido}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
     
@@ -71,10 +74,12 @@ Route::get('productos/{producto}', [ProductoController::class, 'show'])->name('p
 Route::get('buscar/productos', [BuscadorController::class, 'buscar'])->name('buscador.productos');
 Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
-Route::resource('usuarios', UserController::class);
+Route::get('usuarios/{usuario}', [UserController::class, 'show'])->name('usuarios.show');
+Route::put('usuarios/{usuario}', [UserController::class, 'update'])->name('usuarios.update');
+Route::get('usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
 Route::get('quienes-somos', [HomeController::class, 'quienes_somos'])->name('quienes-somos');
-Route::get('politiaca-privacidad', [HomeController::class, 'politiaca_privacidad'])->name('politiaca-privacidad');
-Route::get('aviso-legal', [HomeController::class, 'aviso_legal'])->name('aviso-legal');
+Route::get('politica-privacidad', [HomeController::class, 'privacidad'])->name('politica-privacidad');
+Route::get('aviso-legal', [HomeController::class, 'legal'])->name('aviso-legal');
 
 
 

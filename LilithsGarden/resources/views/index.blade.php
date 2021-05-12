@@ -14,8 +14,10 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             @foreach( $carruseles as $carrusel )
-                <div class="carousel-item {{ $loop->first ? ' active' : '' }}" >
-                    <img src="{{URL::asset('storage/'.$carrusel->url)}}" alt="...">
+            <div class="carousel-item {{ $loop->first ? ' active' : '' }}" >
+                <a href="{{route('subcategorias.show', $carrusel->subcategory)}}">
+                    <img src="{{URL::asset('storage/'.$carrusel->url)}}" alt="..." width="50%">
+                </a>
                 </div>
             @endforeach
         </div>

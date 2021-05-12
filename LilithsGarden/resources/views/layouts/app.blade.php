@@ -155,7 +155,7 @@
                     class="p-3"><i class="bi bi-twitter icono-nav"></i></span><span class="p-3"><i
                         class="bi bi-facebook icono-nav"></i></span></p>
             <p class="text-center m-0"><a href="{{route('quienes-somos')}}" class="enlaces">{{ 'Quienes somos' }}</a> | <a
-                    href="" class="enlaces">{{ 'Politica de privacidad' }}</a> | <a href="" class="enlaces">{{ 'Aviso legal' }}</a> | <a
+                    href="{{route('politica-privacidad')}}" class="enlaces">{{ 'Politica de privacidad' }}</a> | <a href="{{route('aviso-legal')}}" class="enlaces">{{ 'Aviso legal' }}</a> | <a
                     href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Contacto' }}</a></p>
             <p class="text-center m-0">
                 {{ 'Copyright' }}&copy; {{ 'Liliths Garden' }} {{ date('Y') }}.

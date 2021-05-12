@@ -26,7 +26,10 @@
             @endforeach
             </tbody>
         </table>
-        <a href="{{route('pedidos.pedido')}}" role="button" class="btn btn-primary">Volver a los pedidos</a>
+        <a href="{{ url()->previous() }}" role="button" class="btn btn-primary">Volver</a>
+        @if (Auth::check() && auth()->user()->role == 1)
+            <a href="{{route('pedidos.pedidos')}}" role="button" class="btn btn-primary">Volver a administración de pedidos</a>
+        @endif
     </div>
 
 @endsection
