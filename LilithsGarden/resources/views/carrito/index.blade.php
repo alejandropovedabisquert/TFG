@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Carrito')
+<script src="https://www.paypal.com/sdk/js?client-id=AVtuAmt0l_vUByYGq3D-T2I6MGeEYFrApocZ85hJ45YpF7n-eebEeb2Qf68m9VkgnOx_hdIhJfQPbIs0&currency=EUR&disable-funding=card,sofort"></script>
 @section('content')
+
     <div class="container">
         <h1>Carrito</h1>
         @if (session()->has('success'))
@@ -49,7 +51,8 @@
                     </tbody>
                 </table>
                 <h3>Precio total: {{ \Cart::session(auth()->id())->getTotal() }}&euro;</h3>
-                <form action="{{ route('pedido.store') }}" method="post">
+
+                <form action="{{ route('pedido.store') }}" method="post" name="formulariPago">
                     @csrf
                     <input type="hidden" name="totalPrice" value="{{ \Cart::session(auth()->id())->getTotal() }}">
                     <input type="hidden" name="deliveryAddress" id="deliveryAddress"
@@ -65,13 +68,46 @@
                             value="{{ \Cart::session(auth()->id())->get($item->id)->getPriceSum() }}">
                         <span class="visually-hidden">{{ $numeroLineas++ }}</span>
                     @endforeach
-                    <div class="mt-2 text-right">
-                        <a href="{{ route('cart.clear') }}" role="button" class="btn btn-danger">Vaciar carrito</a>
-                        <button class="btn btn-primary shadow-none" type="submit">{{ 'Comprar' }}</button>
+                    <div class="mt-2 text-right" style="width: 250px; float: right;">
+                        <div id="paypal-button-container" ></div>
+                        <a href="{{ route('cart.clear') }}" role="button" class="btn btn-danger mt-2">Vaciar carrito</a>
                     </div>
+                    
                 </form>
+               
         @endif
 
     </div>
     </div>
-@endsection
+    @endsection
+   
+    <script>
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                application_context: {
+          brand_name : 'Productos de Liliths Garden',
+        },
+                purchase_units: [{
+                    amount: {
+                        value: {{ \Cart::session(auth()->id())->getTotal() }}
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                // Show a success message to the buyer
+                document.formulariPago.submit()
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+            });
+        }
+
+
+    }).render('#paypal-button-container');
+</script>

@@ -34,7 +34,7 @@ class CartController extends Controller
     {
         try {
             \Cart::session(auth()->id())->remove($producto);
-            return back()->with('success', 'Producto se ha borrado del carrito satisfactoriamente!');
+            return back()->with('success', '¡El producto se ha borrado del carrito satisfactoriamente!');
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }
@@ -44,7 +44,7 @@ class CartController extends Controller
     {
         try {
             \Cart::session(auth()->id())->clear();
-            return back();
+            return back()->with('success', '¡Has vaciado el carrito!');
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }
@@ -61,7 +61,7 @@ class CartController extends Controller
                 ),
 
             ]);
-            return back();
+            return redirect()->route('cart.checkout');
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }

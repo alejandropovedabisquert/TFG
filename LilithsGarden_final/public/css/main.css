@@ -1,0 +1,112 @@
+.header,
+.footer {
+    background-color: #FFEBEC !important;
+}
+
+.sub-header {
+    background-color: #DC939F !important;
+    position: static !important;
+}
+
+img {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    /* width: 50% !important; */
+}
+
+h1 {
+    padding-top: 20px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+main {
+    margin-bottom: 500px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.icono-nav {
+    font-size: 2rem;
+}
+
+.cartas-inicio {
+    border: 1px solid rgba(255, 255, 255, 0) !important;
+}
+
+.enlaces-productos,
+.enlaces {
+    color: black;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.enlaces-productos:hover,
+.enlaces:hover {
+    color: black;
+}
+
+.card-img-top {
+    width: 200px !important;
+}
+
+.card-img-top:hover {
+    transform: scale(0.7);
+    transition: 0.7s;
+}
+
+.producto-flotante {
+    position: relative;
+    top: 10%;
+    left: 50%;
+}
+
+.carta-formulario {
+    margin-top: 15%;
+}
+
+.carta-usuario {
+    margin-top: 10%;
+}
+
+.cabeceras-cartas {
+    font-weight: bold;
+    background-color: #DC939F !important;
+}
+
+#atencion-cliente {
+    font-size: 30px;
+}
+
+.requerido {
+    color: red;
+    font-size: 25px;
+}
+
+.menu-header {
+    margin-right: 50px;
+}
+
+.comentario {
+    width: 600px;
+    display: inline;
+}
+
+.descripcion-producto {
+    line-height: 2;
+}

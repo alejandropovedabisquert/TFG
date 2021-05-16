@@ -38,8 +38,6 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|min:2|max:30',
             'deliveryAddress' => 'required|max:50',
-            'password' => 'required|min:7|confirmed',
-            'password_confirmation' => 'required|min:7'
         ]);
         try {
 

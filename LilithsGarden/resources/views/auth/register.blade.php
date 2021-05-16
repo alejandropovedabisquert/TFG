@@ -75,9 +75,21 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                             </div>
+                            
+                        </div>
+                        <div class="form-check col pt-2" style="padding-left: 15%;">
+                                <input class="form-check-input @error('terminos') is-invalid @enderror" type="checkbox" id="flexCheckDefault" name="terminos">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                  Acepto la Política de Privacidad y las Condiciones Generales
+                                </label>
+                                @error('terminos')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0 pt-4">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Registro') }}

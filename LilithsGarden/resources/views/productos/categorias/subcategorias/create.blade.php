@@ -35,6 +35,7 @@
                                 <div class="col-md-6">
                                     
                                     <select name="category" id="category" class="form-select">
+                                        <option value="" selected>Sin categoría</option>
                                         @foreach ($categorias as $categoria)
                                             <option value="{{$categoria->id}}">{{$categoria->name}}</option>
                                         @endforeach

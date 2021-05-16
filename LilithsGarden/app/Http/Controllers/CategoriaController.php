@@ -46,8 +46,22 @@ class CategoriaController extends Controller
         }
     }
 
-    public function edit()
+    public function edit(Category $categoria)
     {
-        return back();
+        return view('productos.categorias.edit', compact('categoria'));
+    }
+    public function update(Request $request, Category $categoria)
+    {
+        try {
+            $slug = Str::slug($request->name, "-");
+            $categoria->name = $request->name;
+            $categoria->slug = $slug;
+            $categoria->save();
+            return redirect()->route('categorias.edit', $slug)->with('success','¡La categoría se ha editado correctamente a "'.$request->name.'"!');
+        } catch (\Throwable $th) {
+            abort(403, 'Bad Request');
+        }
+       
+
     }
 }

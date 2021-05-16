@@ -41,31 +41,31 @@ Route::group(['middleware' => 'admin'], function (){
     Route::get('administrador', [AdminController::class, 'show'])->name('administrador.show');
     
     //Usuarios administracion
-    Route::resource('usuarios', UserController::class);
+    Route::resource('administracion/usuarios', UserController::class);
 
     //Relacion categoria producto administracion
-    Route::get('productos/categorias/relacion/create', [RelacionController::class, 'create'])->name('relacion.create');
-    Route::post('productos/categorias/relacion', [RelacionController::class, 'store'])->name('relacion.store');
+    Route::get('administracion/productos/categorias/relacion/create', [RelacionController::class, 'create'])->name('relacion.create');
+    Route::post('administracion/productos/categorias/relacion', [RelacionController::class, 'store'])->name('relacion.store');
 
     //Categorias administracion
-    Route::resource('categorias', CategoriaController::class);
+    Route::resource('administracion/categorias', CategoriaController::class);
 
     //Subcategorias administracion
-    Route::resource('subcategorias', SubcategoriaController::class);
+    Route::resource('administracion/subcategorias', SubcategoriaController::class);
 
     //Carruseles administracion
-    Route::resource('carrusel', CarruselController::class);
+    Route::resource('administracion/carrusel', CarruselController::class);
     
     //Fotos administracion
-    Route::get('productos/foto/create', [FotoController::class, 'create'])->name('foto.create');
-    Route::post('productos/foto', [FotoController::class, 'store'])->name('foto.store');
+    Route::get('administracion/productos/foto/create', [FotoController::class, 'create'])->name('foto.create');
+    Route::post('administracion/productos/foto', [FotoController::class, 'store'])->name('foto.store');
 
     //Productos administracion
-    Route::resource('productos', ProductoController::class);
+    Route::resource('administracion/productos', ProductoController::class);
 
     //Pedidos administracion
-    Route::get('pedidos', [PedidoController::class, 'pedidos'])->name('pedidos.pedidos');
-    Route::get('borrar/{pedido}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
+    Route::get('administracion/pedidos', [PedidoController::class, 'pedidos'])->name('pedidos.pedidos');
+    Route::get('administracion/borrar/{pedido}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
     
 });
 //Rutas publicas

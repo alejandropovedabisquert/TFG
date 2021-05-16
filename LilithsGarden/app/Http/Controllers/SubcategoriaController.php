@@ -45,9 +45,11 @@ class SubcategoriaController extends Controller
     public function update(Request $request, Subcategory $subcategoria)
     {
         try {
+            $slug = Str::slug($request->name, "-");
             $subcategoria->name = $request->name;
+            $subcategoria->slug = $slug;
             $subcategoria->save();
-            return back()->with('success','¡La subcategoría se ha editado correctamente a "'.$request->name.'"!');
+            return redirect()->route('subcategorias.edit', $slug)->with('success','¡La subcategoría se ha editado correctamente a "'.$request->name.'"!');
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }

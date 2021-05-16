@@ -25,13 +25,14 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:2|max:30',
+            'price' => 'required',
+            'stock' => 'required',
+            'description' => 'required',
+        ]);
         try {
-            $request->validate([
-                'name' => 'required|min:2|max:30',
-                'price' => 'required',
-                'stock' => 'required',
-                'description' => 'required',
-            ]);
+ 
             $producto = new Product();
             $slug = Str::slug($request->name, "-");
             $producto->name = $request->name;

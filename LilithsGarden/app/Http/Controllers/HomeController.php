@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Category_Primary;
 use App\Models\Photo;
 use App\Models\Product;
+use App\Models\Subcategory;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function __invoke()
     {
         $productos = Product::orderBy('created_at', 'desc')->paginate(12);
-        return view('index', compact('productos'));
+        $subcategorias = Subcategory::orderBy('created_at', 'desc')->get();
+        return view('index', compact('productos', 'subcategorias'));
         
     }
 

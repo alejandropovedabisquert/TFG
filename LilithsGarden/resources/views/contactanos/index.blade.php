@@ -2,7 +2,7 @@
 @section('title', 'Contáctanos')
 @section('content')
     <div class="container">
-        <h1>Dejanos un mensaje</h1>
+        <h1>Déjanos un mensaje</h1>
         @if (session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -42,11 +42,15 @@
             </div>
             <div class="mb-3">
                 <label for="number-order" class="form-label">Número pedido:</label>
-                <select name="number-order" id="number-order" class="form-select @error('number-order') is-invalid @enderror">
-                    <option selected>Selecciona el número de pedido</option>
-                    @foreach ($pedidosUsuario as $pedido)
-                        <option value="{{$pedido->id}}">{{$pedido->id}}</option>
-                    @endforeach
+                <select name="number-order" id="number-order"
+                    class="form-select @error('number-order') is-invalid @enderror">
+                    <option value="" selected>Selecciona el número de pedido</option>
+                    @if (Auth::check())
+                        @foreach ($pedidosUsuario as $pedido)
+                            <option value="{{ $pedido->id }}">{{ $pedido->id }}</option>
+                        @endforeach
+                    @endif
+
                 </select>
                 @error('number-order')
                     <span class="invalid-feedback" role="alert">
@@ -57,7 +61,7 @@
             <div class="mb-3">
                 <label for="message" class="form-label">Mensaje: <span class="requerido">*</span></label>
                 <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message"
-                    rows="3" >{{ old('message') }}</textarea>
+                    rows="3">{{ old('message') }}</textarea>
                 @error('message')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

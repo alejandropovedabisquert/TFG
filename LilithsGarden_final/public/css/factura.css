@@ -1,0 +1,51 @@
+caption {
+    font-size: 30px;
+}
+
+#factura {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#cabeceraTabla th:nth-child(1) {
+    width: 30%;
+}
+
+#cabeceraTabla th:nth-child(2) {
+    width: 20%;
+}
+
+#cabeceraTabla th:nth-child(3) {
+    width: 35%;
+}
+
+#cabeceraTabla th:nth-child(4) {
+    width: 15%;
+}
+
+.filaCabecera,
+.filaCuerpo {
+    padding: 10px;
+    border: 3px solid purple;
+}
+
+#cabeceraTabla {
+    background-color: lightgray;
+}
+
+th td {
+    letter-spacing: 2px;
+}
+
+#cuerpoTabla td {
+    text-align: center;
+}
+
+tfoot th {
+    text-align: right;
+}
+
+#importe {
+    text-align: right;
+}

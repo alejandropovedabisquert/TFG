@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Administracion')
+@section('title', 'Administración editar subcateogría')
 @section('content')
     <div class="container">
-        <h1>Editar categoría</h1>
+        <h1>Editar subcateogría</h1>
         @if (session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Categoria') }}</div>
+                    <div class="card-header">{{ __('Subcategoría') }}</div>
                     <div class="card-body">
                         <form action="{{ route('subcategorias.update', $subcategoria) }}" method="POST">
                             @csrf
@@ -34,8 +34,9 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Editar Categoria') }}
+                                        {{ __('Editar Subcategoría') }}
                                     </button>
+                                    <a href="{{ url()->previous() }}" role="button" class="btn btn-primary">Volver</a>
                                 </div>
                             </div>
                         </form>

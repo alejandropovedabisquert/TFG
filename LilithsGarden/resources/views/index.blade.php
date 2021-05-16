@@ -61,23 +61,41 @@
           </div>
     </nav>
     <div class="container">
-        <ul>
-            <li>
-                <b id="atencion-cliente">{{ 'Atención al cliente' }}</b>
-            </li>
-            <li>
-                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Preguntas frecuentes' }}</a>
-            </li>
-            <li>
-                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Acerca de los envios' }}</a>
-            </li>
-            <li>
-                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Política de privacidad' }}</a>
-            </li>
-            <li>
-                <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Contacta con nosotros' }}</a>
-            </li>
-        </ul>
+        <div class="row pt-3">
+            <div class="col-md-6">
+                <ul>
+                    <li>
+                        <b id="atencion-cliente">{{ 'Atención al cliente' }}</b>
+                    </li>
+                    <li class="pt-2">
+                        <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Preguntas frecuentes' }}</a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Acerca de los envios' }}</a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="{{route('politica-privacidad')}}" class="enlaces">{{ 'Política de privacidad' }}</a>
+                    </li>
+                    <li class="pt-2">
+                        <a href="{{ route('contactanos.index') }}" class="enlaces">{{ 'Contacta con nosotros' }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul>
+                    <li>
+                        <b id="atencion-cliente">{{ 'Subcategorias' }}</b>
+                    </li>
+                @foreach ($subcategorias->take(7) as $subcategoria)
+                    <li class="pt-2">
+                        <a href="{{route('subcategorias.show', $subcategoria->slug)}}" class="enlaces">{{$subcategoria->name}}</a>
+                    </li>
+                @endforeach
+            </ul>
+            </div>
+
+        </div>
+        
     </div>
 @endsection
 
