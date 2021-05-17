@@ -40,7 +40,7 @@
                                             value="{{ \Cart::session(auth()->id())->get($item->id)->getPriceSum() }}}"
                                             style="width: 50px;">
                                         <input name="quantity" type="number" value="{{ $item->quantity }}"
-                                            style="width: 50px;">
+                                            style="width: 50px;" min="1" max="10">
                                         <button class="btn btn-success">Guardar</button>
                                     </form>
                                 </td>

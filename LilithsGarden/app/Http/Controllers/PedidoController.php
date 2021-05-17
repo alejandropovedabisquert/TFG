@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderLine;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -23,7 +24,11 @@ class PedidoController extends Controller
                 $ultimoIdPedido = $idPedido->id;
             }
 
+
             foreach ($request->lineaPedido as $req) {
+                $producto = Product::find($req["product_id"]);
+                $producto->stock = ($producto->stock - $req["quantity"]);
+                $producto->save();             
                 $nuevaLineaPedido = new OrderLine();
                 $nuevaLineaPedido->order_id = $ultimoIdPedido;
                 $nuevaLineaPedido->product_id = $req["product_id"];

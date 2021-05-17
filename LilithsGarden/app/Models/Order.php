@@ -9,10 +9,12 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function orderLines(){
+    public function orderLines()
+    {
         return $this->hasMany(OrderLine::class);
     }
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

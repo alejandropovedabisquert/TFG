@@ -32,6 +32,6 @@
 
 @keyframes moveSlideshow {
     100% {
-        transform: translateX(-66.66666%);
+        transform: translateX(-35.66666%);
     }
 }

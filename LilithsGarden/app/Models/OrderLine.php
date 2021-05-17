@@ -9,11 +9,12 @@ class OrderLine extends Model
 {
     use HasFactory;
 
-    //Relacion uno a muchos
-    public function order(){
+    public function order()
+    {
         return $this->belongsTo(Order::class);
     }
-    public function product(){
+    public function product()
+    {
         return $this->belongsTo(Product::class);
     }
 }

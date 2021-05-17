@@ -17,8 +17,7 @@ use App\Http\Controllers\SubcategoriaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\ContactanosMailable;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,52 +30,40 @@ use App\Mail\ContactanosMailable;
 |
 */
 
-
-Route::get('/', HomeController::class)->name('home');
 Auth::routes();
 
 //Grupo para administracion
-Route::group(['middleware' => 'admin'], function (){
+Route::group(['middleware' => 'admin'], function () {
     //Mostrara la pantalla de administracion
     Route::get('administrador', [AdminController::class, 'show'])->name('administrador.show');
-    
     //Usuarios administracion
     Route::resource('administracion/usuarios', UserController::class);
-
     //Relacion categoria producto administracion
     Route::get('administracion/productos/categorias/relacion/create', [RelacionController::class, 'create'])->name('relacion.create');
     Route::post('administracion/productos/categorias/relacion', [RelacionController::class, 'store'])->name('relacion.store');
-
     //Categorias administracion
     Route::resource('administracion/categorias', CategoriaController::class);
-
     //Subcategorias administracion
     Route::resource('administracion/subcategorias', SubcategoriaController::class);
-
     //Carruseles administracion
     Route::resource('administracion/carrusel', CarruselController::class);
-    
     //Fotos administracion
     Route::get('administracion/productos/foto/create', [FotoController::class, 'create'])->name('foto.create');
     Route::post('administracion/productos/foto', [FotoController::class, 'store'])->name('foto.store');
-
     //Productos administracion
     Route::resource('administracion/productos', ProductoController::class);
-
     //Pedidos administracion
     Route::get('administracion/pedidos', [PedidoController::class, 'pedidos'])->name('pedidos.pedidos');
     Route::get('administracion/borrar/{pedido}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
-    
 });
+
 //Rutas publicas
+Route::get('/', HomeController::class)->name('home');
 Route::get('subcategorias/{subcategoria}', [SubcategoriaController::class, 'show'])->name('subcategorias.show');
 Route::get('productos/{producto}', [ProductoController::class, 'show'])->name('productos.show');
 Route::get('buscar/productos', [BuscadorController::class, 'buscar'])->name('buscador.productos');
 Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
-Route::get('usuarios/{usuario}', [UserController::class, 'show'])->name('usuarios.show');
-Route::put('usuarios/{usuario}', [UserController::class, 'update'])->name('usuarios.update');
-Route::get('usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
 Route::get('quienes-somos', [HomeController::class, 'quienes_somos'])->name('quienes-somos');
 Route::get('politica-privacidad', [HomeController::class, 'privacidad'])->name('politica-privacidad');
 Route::get('aviso-legal', [HomeController::class, 'legal'])->name('aviso-legal');
@@ -84,9 +71,14 @@ Route::get('aviso-legal', [HomeController::class, 'legal'])->name('aviso-legal')
 
 
 //Rutas con inicio de sesion obligatorio
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => 'auth'], function () {
+    //Usuario
+    Route::get('usuarios/{usuario}', [UserController::class, 'show'])->name('usuarios.show');
+    Route::put('usuarios/{usuario}', [UserController::class, 'update'])->name('usuarios.update');
+    Route::get('usuarios/{usuario}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+
     //Carrito
-    Route::get('carrito', [CartController::class , 'checkout'])->name('cart.checkout');
+    Route::get('carrito', [CartController::class, 'checkout'])->name('cart.checkout');
     Route::post('anyadir-carrito/{producto}', [CartController::class, 'add'])->name('cart.add');
     Route::get('actualizar-carrito/{producto}', [CartController::class, 'update'])->name('cart.update');
     Route::get('borrar-carrito/{producto}', [CartController::class, 'delete'])->name('cart.delete');
@@ -103,8 +95,3 @@ Route::group(['middleware' => 'auth'], function(){
     //Generador de facturas
     Route::get('factura/{pedido}', [generadorFaturaController::class, 'imprimir'])->name('generador.imprimir');
 });
-
-
-
-
-

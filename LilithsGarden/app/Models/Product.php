@@ -14,20 +14,23 @@ class Product extends Model
         return 'slug';
     }
 
-    //Relacion muchos a muchos
-    public function subcategorias(){
+    public function subcategorias()
+    {
         return $this->belongsToMany(Subcategory::class);
     }
 
-    //Relacion uno a muchos
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class)->paginate(5);
     }
-    public function photos(){
+
+    public function photos()
+    {
         return $this->hasMany(Photo::class);
     }
-    public function orderLine(){
+    
+    public function orderLine()
+    {
         return $this->hasOne(OrderLine::class);
     }
-
 }

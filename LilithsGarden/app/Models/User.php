@@ -46,11 +46,13 @@ class User extends Authenticatable
 
 
     //Relacion uno a muchos
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    public function order(){
+    public function order()
+    {
         return $this->hasMany(Order::class);
     }
 }

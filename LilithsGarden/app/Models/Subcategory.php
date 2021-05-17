@@ -14,10 +14,13 @@ class Subcategory extends Model
         return 'slug';
     }
 
-    public function productos(){
+    public function productos()
+    {
         return $this->belongsToMany(Product::class);
     }
-    public function categorias(){
+    
+    public function categorias()
+    {
         return $this->belongsTo(Category::class);
     }
 
