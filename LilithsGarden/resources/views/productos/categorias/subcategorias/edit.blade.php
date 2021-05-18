@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Subcategoría') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Subcategoría') }}</div>
                     <div class="card-body">
                         <form action="{{ route('subcategorias.update', $subcategoria) }}" method="POST">
                             @csrf

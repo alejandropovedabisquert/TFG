@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 
 class ProductoController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $productos = Product::paginate(12);
         return view('productos.productos', compact('productos'));
@@ -41,7 +41,9 @@ class ProductoController extends Controller
             $producto->stock = $request->stock;
             $producto->description = $request->description;
             $producto->save();
+
             return redirect()->route('productos.create')->with('success', '¡El producto "' . $request->name . '" se ha creado correctamente!');
+
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }
@@ -51,8 +53,15 @@ class ProductoController extends Controller
     {
         return view('productos.edit', compact('producto'));
     }
+
     public function update(Request $request, Product $producto)
     {
+        $request->validate([
+            'name' => 'required|min:2|max:30',
+            'price' => 'required',
+            'stock' => 'required',
+            'description' => 'required',
+        ]);
         try {
             $producto->name = $request->name;
             $producto->price = $request->price;
@@ -61,6 +70,7 @@ class ProductoController extends Controller
             $producto->save();
 
             return redirect()->route('productos.show', $producto)->with('success', '¡El producto se ha editado correctamente!');
+
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }
@@ -69,8 +79,11 @@ class ProductoController extends Controller
     public function destroy(Product $producto)
     {
         try {
+
             $producto->delete();
+
             return redirect()->route('productos.index')->with('success', '¡El producto "' . $producto->name . '" se ha eliminado correctamente!');
+
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }
@@ -78,10 +91,12 @@ class ProductoController extends Controller
 
     public function show(Product $producto)
     {
+
         $imagenes = $producto->photos;
         $comentarios = $producto->comments();
         $numeroVisorImagenes = 1;
-        $subcategorias = Product::find($producto->id)->subcategorias()->get();
+        $subcategorias = $producto->subcategorias()->get();
+
         return view('productos.producto', compact('producto', 'imagenes', 'comentarios', 'numeroVisorImagenes', 'subcategorias'));
     }
 }

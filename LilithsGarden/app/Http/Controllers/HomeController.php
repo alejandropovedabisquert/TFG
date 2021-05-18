@@ -27,9 +27,14 @@ class HomeController extends Controller
     {
         $productos = Product::orderBy('created_at', 'desc')->paginate(12);
         $subcategorias = Subcategory::orderBy('created_at', 'desc')->get();
-        return view('index', compact('productos', 'subcategorias'));
+        $randomizadorProductos = Product::inRandomOrder()->get();
+        return view('index', compact('productos', 'subcategorias', 'randomizadorProductos'));
         
     }
+
+    public function show(){
+        return view("administrador.index");
+}
 
     public function quienes_somos()
     {

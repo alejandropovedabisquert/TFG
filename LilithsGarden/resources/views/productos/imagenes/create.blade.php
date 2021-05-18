@@ -12,7 +12,7 @@
             @endif
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Imagen') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Imagen') }}</div>
                     <div class="card-body">
                         <form action="{{ route('foto.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf

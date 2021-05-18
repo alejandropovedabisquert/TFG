@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title', 'Carrito')
-<script src="https://www.paypal.com/sdk/js?client-id=AVtuAmt0l_vUByYGq3D-T2I6MGeEYFrApocZ85hJ45YpF7n-eebEeb2Qf68m9VkgnOx_hdIhJfQPbIs0&currency=EUR&disable-funding=card,sofort"></script>
 @section('content')
 
     <div class="container">
@@ -80,7 +79,7 @@
     </div>
     </div>
     @endsection
-   
+    <script src="https://www.paypal.com/sdk/js?client-id=AVtuAmt0l_vUByYGq3D-T2I6MGeEYFrApocZ85hJ45YpF7n-eebEeb2Qf68m9VkgnOx_hdIhJfQPbIs0&currency=EUR&disable-funding=card,sofort"></script>
     <script>
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({

@@ -29,7 +29,7 @@ body {
 }
 
 main {
-    margin-bottom: 500px;
+    margin-bottom: 400px;
 }
 
 .footer {
@@ -76,6 +76,12 @@ li {
     left: 50%;
 }
 
+.precio {
+    font-size: xx-large;
+    color: #DC939F;
+    font-weight: bold;
+}
+
 .carta-formulario {
     margin-top: 15%;
 }
@@ -109,4 +115,10 @@ li {
 
 .descripcion-producto {
     line-height: 2;
+}
+
+.scroll-box {
+    overflow-y: auto;
+    height: 150px;
+    padding: 1rem
 }

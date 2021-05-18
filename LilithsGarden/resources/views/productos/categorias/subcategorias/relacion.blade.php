@@ -12,7 +12,7 @@
             @endif
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Categoria') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Categoria') }}</div>
                     <div class="card-body">
                         <form action="{{ route('relacion.store') }}" method="POST">
                             @csrf

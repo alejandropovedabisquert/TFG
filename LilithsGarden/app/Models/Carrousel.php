@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Carrousel extends Model
 {
     use HasFactory;
+    
     public function subcategory()
     {
         return $this->belongsTo(Subcategory::class);

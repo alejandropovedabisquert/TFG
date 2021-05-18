@@ -11,7 +11,7 @@
             @endif
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Producto') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Producto') }}</div>
                     <div class="card-body">
                         <form action="{{ route('productos.store') }}" method="POST">
                             @csrf

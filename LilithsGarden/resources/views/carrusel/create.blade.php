@@ -12,7 +12,7 @@
             @endif
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Carrusel') }}</div>
+                    <div class="card-header cabeceras-cartas">{{ __('Carrusel') }}</div>
                     <div class="card-body">
                         <form action="{{ route('carrusel.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf

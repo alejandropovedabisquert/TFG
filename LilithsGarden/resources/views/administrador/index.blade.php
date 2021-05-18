@@ -116,6 +116,18 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6 mt-5">
+                <div class="card">
+                    <div class="card-header cabeceras-cartas">{{ __('Comentarios') }}</div>
+                    <div class="card-body">
+                        <div class="col">
+                            <a href="{{route('comentarios.index')}}"><button type="submit" class="btn btn-info">
+                                {{ __('Listar Comentarios') }}
+                            </button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
