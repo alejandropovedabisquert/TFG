@@ -113,7 +113,7 @@
         
                                 @if (Auth::user()->role == 1)
                                     <a class="dropdown-item"
-                                        href="{{ route('administrador.show') }}">{{ __('Administracion') }}</a>
+                                        href="{{ route('administrador.show') }}">{{ __('Administración') }}</a>
                                 @endif
         
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

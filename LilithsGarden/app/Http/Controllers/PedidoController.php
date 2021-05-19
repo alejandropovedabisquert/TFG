@@ -37,8 +37,9 @@ class PedidoController extends Controller
                 $nuevaLineaPedido->save();
             }
 
+            \Cart::session(auth()->id())->clear();
 
-            return redirect()->route('cart.clear');
+            return back()->with('success', '¡La compra se ha realizado correctamente!');
         } catch (\Throwable $th) {
             abort(403, 'Bad Request');
         }

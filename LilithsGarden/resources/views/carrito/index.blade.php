@@ -103,7 +103,7 @@
             return actions.order.capture().then(function(details) {
                 // Show a success message to the buyer
                 document.formulariPago.submit()
-                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+
             });
         }
 
