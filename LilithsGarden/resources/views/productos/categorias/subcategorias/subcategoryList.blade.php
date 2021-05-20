@@ -32,7 +32,7 @@
                     </div>
                 </div>
             @endforeach
-            {{ $subcategorias->links() }}
         </div>
+        {{ $subcategorias->links() }}
         <a href="{{ route('administrador.show') }}"><button class="btn btn-primary">Administación</button></a>
     @endsection

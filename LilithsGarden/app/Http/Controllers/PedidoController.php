@@ -46,7 +46,7 @@ class PedidoController extends Controller
     }
     public function pedidos()
     {
-        $pedidos = Order::get();
+        $pedidos = Order::paginate(12);
         return view('usuarios.pedidos.listOrder', compact('pedidos'));
     }
     public function destroy(Order $pedido)

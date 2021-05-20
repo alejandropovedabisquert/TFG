@@ -70,7 +70,7 @@ class SubcategoriaController extends Controller
     }
 
     public function index(){
-            $subcategorias = Subcategory::paginate();
+            $subcategorias = Subcategory::paginate(12);
             return view('productos.categorias.subcategorias.subcategoryList', compact('subcategorias'));
     }
 }
