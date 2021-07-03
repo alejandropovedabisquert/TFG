@@ -79,9 +79,7 @@ class ProductoController extends Controller
     public function destroy(Product $producto)
     {
         try {
-
             $producto->delete();
-
             return redirect()->route('productos.index')->with('success', '¡El producto "' . $producto->name . '" se ha eliminado correctamente!');
 
         } catch (\Throwable $th) {
@@ -91,12 +89,10 @@ class ProductoController extends Controller
 
     public function show(Product $producto)
     {
-
         $imagenes = $producto->photos;
         $comentarios = $producto->comments();
         $numeroVisorImagenes = 1;
         $subcategorias = $producto->subcategorias()->get();
-
         return view('productos.producto', compact('producto', 'imagenes', 'comentarios', 'numeroVisorImagenes', 'subcategorias'));
     }
 }
